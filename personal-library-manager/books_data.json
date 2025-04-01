@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Meri Kitab",
+        "author": "Muhammad Oemr",
+        "year": "2025",
+        "genre": "Reality",
+        "read": true
+    },
+    {
+        "title": "Meri Kitab Volume 2",
+        "author": "Muhammad Omer",
+        "year": "2025",
+        "genre": "Reality",
+        "read": true
+    },
+    {
+        "title": "Harry Potter",
+        "author": "JK Rowling",
+        "year": "2001",
+        "genre": "Fiction",
+        "read": false
+    }
+]
