@@ -1,7 +1,12 @@
 [project]
 name = "password-strength-meter"
 version = "0.1.0"
-description = "A password strength meter app created by Muhamamd Omer"
+description = "A password strength meter app created by Muhammad Omer"
 readme = "README.md"
 requires-python = ">=3.8,<3.13"
-dependencies = []
+dependencies = [
+    "streamlit"
+]
+
+[tool.poetry]
+package-mode = false
