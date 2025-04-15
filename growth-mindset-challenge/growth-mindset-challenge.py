@@ -1,7 +1,7 @@
 import streamlit as st
 
-st.set_page_config("Omer Growth Mindset Project", project_icon="🌟")
-st.title("Growth Mindset Challenge: Web App With Streamlit")
+st.set_page_config(page_title="Omer Growth Mindset Project", layout="wide")
+st.title("Growth Mindset Challenge: Web App With Streamlit By Muhammad Omer")
 
 #head-section
 st.header("🚀 Welcome To Your Growth Journey!")
