@@ -50,16 +50,4 @@ Wishing you all the best on your journey to growth and success!
 
 We want to see how many of you are willing to adopt the growth mindset. As a first goal, uou are required to create the following project ASAP:
 
-**[Streamlit Project Video: The Best Way to Build Python Apps?](https://www.youtube.com/watch?v=8W8NQFFbDcU)**
-
-You will build this project using [UV](https://github.com/panaversity/learn-modern-ai-python/tree/main/01_uv) and [Streamlit](https://github.com/panaversity/learn-modern-ai-python/tree/main/03_ui_streamlit).
-
-You will publish the code on [Github](https://github.com/panaversity/learn-modern-ai-python/tree/main/08_github) and also the running streamlit app on the web.
-
-Once you are done submit this form ASAP, you will be evaluated by who submits the project first and the quality of the project:
-
-https://forms.gle/tS7C3sr55tUZ36GY8 
-
-You can required to innovate and improve the webapp as described in the video above.
-
-You will also share your published app in your section whatsapp group. However, do not share your source code in your github repo.
+👉 Link: https://www.omer-growth-mindset-challenge.streamlit.app
