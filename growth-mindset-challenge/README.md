@@ -50,4 +50,4 @@ Wishing you all the best on your journey to growth and success!
 
 We want to see how many of you are willing to adopt the growth mindset. As a first goal, uou are required to create the following project ASAP:
 
-👉 Link To Visit: https://omer-growth-mindset-challenge.streamlit.app/
+👉 Link To Visit: omer-growth-mindset-challenge.streamlit.app/
