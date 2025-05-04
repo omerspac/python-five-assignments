@@ -1,0 +1,13 @@
+[project]
+name = "secure-data-encryption"
+version = "0.1.0"
+description = "A secure data encryption app by Muhammad Omer"
+readme = "README.md"
+requires-python = ">=3.8,<3.13"
+dependencies = [
+    "streamlit",
+    "cryptography"
+]
+
+[tool.poetry]
+package-mode = false

@@ -1,4 +1,4 @@
-# python-assignments
+# Python Assignments
 
 1> Growth Mindset Challenge
 2> Password Strength Meter
