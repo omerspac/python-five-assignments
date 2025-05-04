@@ -61,7 +61,7 @@ choice = st.sidebar.selectbox("Navigation", menu)
 
 if choice == "Home":
     st.subheader("🏠 Welcome to the Secure Data System")
-    st.write("Use this app to **securely store and retrieve data** using unique passkeys.")
+    st.write("Use this app to **securely store and retrieve data** using unique passkeys. Please head to the register page to get started.")
 
 # REGISTER
 elif choice == "Register":
@@ -84,7 +84,8 @@ elif choice == "Register":
         else:
             st.error("Both fields are required.")
 
-    elif choice == "Login":
+# LOGIN
+elif choice == "Login":
         st.subheader("🔑 User Login")
 
         if time.time() < st.session_state.lockout_time:
@@ -99,10 +100,11 @@ elif choice == "Register":
             if username in stored_data and stored_data[username]["password"] == hash_password(password):
                 st.session_state.authenticated_user = username
                 st.session_state.failed_attempt = 0
+                st.session_state.lockout_time = 0
                 st.success(f"✅ Welcome {username}")
             else:
-                st.session_state.failed_attempts += 1
-                remaining = 3 - st.session_state.failed_attempts
+                st.session_state.failed_attempt += 1
+                remaining = 3 - st.session_state.failed_attempt
                 st.error(f"❌ Invalid Credentials! Attempts left: {remaining}")
 
                 if st.session_state.failed_attempt >= 3:
@@ -112,6 +114,10 @@ elif choice == "Register":
                     
 # STORE DATA
 elif choice == "Store Data":
+    if st.session_state.authenticated_user is None:
+        st.warning("🔑 Please login to access this page.")
+        st.stop()
+
     st.subheader("📂 Store Data Securely")
     user_data = st.text_area("Enter Data:")
     passkey = st.text_input("Enter Passkey:", type="password")
@@ -119,14 +125,29 @@ elif choice == "Store Data":
     if st.button("Encrypt & Save"):
         if user_data and passkey:
             hashed_passkey = hash_password(passkey)
+
             encrypted_text = encrypt_text(user_data, passkey)
-            stored_data[encrypted_text] = {"encrypted_text": encrypted_text, "passkey": hashed_passkey}
+
+            st.text_area("Encrypted Data:", encrypted_text)
+
+            stored_data[encrypted_text] = {
+                "encrypted_text": encrypted_text,
+                "passkey": hashed_passkey
+            }
+
+            # Save the data to file
+            save_data(stored_data)
             st.success("✅ Data stored securely!")
         else:
             st.error("⚠️ Both fields are required!")
 
+
 # RETREIVE DATA
 elif choice == "Retrieve Data":
+    if st.session_state.authenticated_user is None:
+        st.warning("🔑 Please login to access this page.")
+        st.stop()
+
     st.subheader("🔍 Retrieve Your Data")
     encrypted_text = st.text_area("Enter Encrypted Data:")
     passkey = st.text_input("Enter Passkey:", type="password")
@@ -137,11 +158,39 @@ elif choice == "Retrieve Data":
 
             if decrypted_text:
                 st.success(f"✅ Decrypted Data: {decrypted_text}")
+                st.session_state.failed_attempt = 0
             else:
-                st.error(f"❌ Incorrect passkey! Attempts remaining: {3 - st.session_state.failed_attempt}")
+                st.session_state.failed_attempt += 1
+                remaining = 3 - st.session_state.failed_attempt
+                st.error(f"❌ Incorrect passkey! Attempts remaining: {remaining}")
 
                 if st.session_state.failed_attempt >= 3:
                     st.warning("🔒 Too many failed attempts! Redirecting to Login Page.")
+                    st.session_state.authenticated_user = None
                     st.experimental_rerun()
         else:
             st.error("⚠️ Both fields are required!")
+
+
+# FOOTER
+st.markdown(
+    """
+    <style>
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        background-color: none;
+        font-size: 16px;
+        color: white;
+        border-top: 1px solid #ddd;
+    }
+    </style>
+    <div class="footer">
+        Made by Muhammad Omer
+    </div>
+    """,
+    unsafe_allow_html=True
+)
